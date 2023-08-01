@@ -1,15 +1,9 @@
 import time
 import timeit
 
-from ..config.config_interface import get_role
-from modemWrapperClass import ModemWrapper
-
-auv = 'AUV8'
 position_XYZ = [12.324, 23.234, -5.098]
-modem = ModemWrapper(auv, get_role(auv), True, [0 ,0, 0])
 start_time = time.time()
-modem.wait_for_link(5)
-
+    
 
 def encoding_duration():
     print('Average message encode time: %0.2f ms'% timeit.timeit('modem.encode_std_msg([3]+position_XYZ)', globals=globals(), number=1000))
@@ -21,7 +15,7 @@ def test_mutliprocessing(sleep_time):
     print('Main process: killing child thread...')
     modem.end_reception_process()
 
-def real_world_com_test():
+def real_world_com_test(modem):
     modem.start_reception_process()
     try: 
         while True:
@@ -43,10 +37,6 @@ def get_position():
 def get_state():
     # Currently just a place holder for ROS call
     return [int(time.time() - start_time)]
-
-
-if __name__ == "__main__":
-    real_world_com_test()
 
 
 

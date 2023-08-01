@@ -1,6 +1,8 @@
 import json
+import os 
 
-CONFIG_FILE = 'com_config.json'
+ABS_PATH =  os.path.dirname(__file__)
+CONFIG_FILE =  ABS_PATH + os.sep +'com_config.json'
 
 def read_config_file():
     with open(CONFIG_FILE, 'r') as config:
