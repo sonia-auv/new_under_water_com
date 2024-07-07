@@ -5,8 +5,8 @@ from config.config_interface import get_role
 def test_mode():
     auv = 'AUV8'
     role = get_role(auv)
-    modem = ModemWrapper(auv, role, True, [0 ,0, 0])
-    modem.wait_for_link(5)
-    real_world_com_test(modem)
+    modem = ModemWrapper(auv, role, False, [0 ,0, 0])
+    return modem.wait_for_link(5)
+   #real_world_com_test(modem)
 
-test_mode()
+print(test_mode())

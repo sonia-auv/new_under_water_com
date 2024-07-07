@@ -17,7 +17,7 @@ class ModemWrapper:
         if test:
             self.wlModem = WlModemSimulator(*test_setup)
         else:
-            self.wlModem = WlModem()
+            self.wlModem = WlModem("/dev/MODEM")
         self.name = name
 
         self.ch = 6
